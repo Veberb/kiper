@@ -4,9 +4,16 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "client": "yarn workspace @kiper/client start",
+    "server": "yarn workspace @kiper/server start"
+  },
   "devDependencies": {
     "@kiper/eslint-config": "*",
     "lerna": "^3.5.1",
     "prettier": "^2.0.5"
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0"
   }
 }
