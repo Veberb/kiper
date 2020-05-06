@@ -12,7 +12,9 @@
   "dependencies": {
     "@kiper/eslint-config": "^1.0.0",
     "apollo-server": "^2.13.0",
-    "graphql": "^15.0.0"
+    "dotenv": "^8.2.0",
+    "graphql": "^15.0.0",
+    "mongoose": "^5.9.12"
   },
   "devDependencies": {
     "@kiper/eslint-config": "1.0.0"
