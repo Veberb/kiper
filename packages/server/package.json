@@ -4,17 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect src/index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "ISC",  
   "dependencies": {
-    "@kiper/eslint-config": "^1.0.0",
     "apollo-server": "^2.13.0",
     "dotenv": "^8.2.0",
     "graphql": "^15.0.0",
-    "mongoose": "^5.9.12"
+    "mongoose": "^5.9.12",
+    "nodemon": "^2.0.3"
   },
   "devDependencies": {
     "@kiper/eslint-config": "1.0.0"
