@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
-export const CREATE_APARTMENT = gql`
-  mutation CreateApartment($apartment: Apartment) {
+const CREATE_APARTMENT = gql`
+  mutation CreateApartment($apartment: ApartmentInput!) {
     createApartment(apartment: $apartment) {
       name
       number
@@ -9,3 +9,5 @@ export const CREATE_APARTMENT = gql`
     }
   }
 `;
+
+export default { CREATE_APARTMENT };

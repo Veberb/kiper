@@ -4,11 +4,12 @@ import { Formik } from 'formik';
 import { useMutation } from '@apollo/react-hooks';
 
 import { CreateApartmentSchema } from '../../validation';
-import { CREATE_APARTMENT } from '../../mutation';
+import client, { ApartmentMutation } from '../../services/apollo';
+//import { CREATE_APARTMENT } from '../../mutation';
 
 export default function Apartment() {
-  const [createApartment, { data }] = useMutation(CREATE_APARTMENT);
-
+  //const [createApartment, { data }] = useMutation(CREATE_APARTMENT);
+  // usar hooks do formik, e altera para usar useMutation;
   return (
     <React.Fragment>
       <Container>
@@ -17,13 +18,13 @@ export default function Apartment() {
           <Formik
             initialValues={{ name: '', number: 0, block: '' }}
             validationSchema={CreateApartmentSchema}
-            onSubmit={(values, actions) => {
-              createApartment({ variables: values });
-              /*setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                console.log(values);
-                actions.setSubmitting(false);
-              }, 1000);*/
+            onSubmit={async (values, actions) => {
+              await client.mutate({
+                mutation: ApartmentMutation.CREATE_APARTMENT,
+                variables: {
+                  apartment: values,
+                },
+              });
             }}
           >
             {({ handleSubmit, handleChange, values, errors, touched }) => (

@@ -6,8 +6,8 @@ const resolvers = {
   },
 
   Mutation: {
-    createApartment: (parent, args) => {
-      return new Apartment(args).save();
+    createApartment: (parent, { apartment }) => {
+      return new Apartment(apartment).save();
     },
   },
 };
