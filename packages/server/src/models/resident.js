@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const ResidentSchema = new Schema({
-  Name: { type: String, required: true },
-  Birth: { type: Number, required: true },
-  Phone: { type: Number, required: true },
-  Cpf: { type: Number, required: true },
-  Email: { type: String, required: true },
-  Apartment: { type: Schema.Types.ObjectId, ref: 'apartment', required: true },
-  Responsible: { type: Number, required: true },
-});
+const ResidentSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    birth: { type: Number, required: true },
+    phone: { type: Number, required: true },
+    cpf: { type: Number, required: true },
+    email: { type: String, required: true },
+    apartment: { type: Schema.Types.ObjectId, ref: 'apartment', required: true },
+    responsible: { type: Number, required: true },
+  },
+  { timestamps: true },
+);
 
 module.exports = mongoose.model('resident', ResidentSchema);
