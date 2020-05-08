@@ -2,7 +2,7 @@ const Apartment = require('./apartmentSchema');
 
 const resolvers = {
   Query: {
-    getApartments: () => [],
+    getApartments: () => Apartment.find(),
   },
 
   Mutation: {
