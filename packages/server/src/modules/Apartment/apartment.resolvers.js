@@ -1,4 +1,4 @@
-const Apartment = require('../models/apartment');
+const Apartment = require('./apartmentSchema');
 
 const resolvers = {
   Query: {
