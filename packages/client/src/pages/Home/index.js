@@ -1,15 +1,22 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Container, Table } from 'react-bootstrap';
 import { PencilSquare, Trash } from 'react-bootstrap-icons';
 
-import { ApartmentQuery } from '../../services/apollo';
+import { ApartmentQuery, ApartmentMutation } from '../../services/apollo';
 import './index.css';
 
 export default function Home() {
   const { loading, error, data } = useQuery(ApartmentQuery.GET_APARTMENTS);
-  console.log(data);
+  const [deleteApartment] = useMutation(ApartmentMutation.DELETE_APARTMENT, {
+    refetchQueries: [{ query: ApartmentQuery.GET_APARTMENTS }],
+  });
   if (loading) return 'Loading apartments';
+
+  const removeApartment = async ({ _id, name }) => {
+    await deleteApartment({ variables: { _id: _id } });
+  };
+
   return (
     <React.Fragment>
       <Container>
@@ -32,8 +39,12 @@ export default function Home() {
                     return <td key={keyIndex}>{apartment[key]}</td>;
                   })}
                   <td className="actions">
-                    <PencilSquare />
-                    <Trash />
+                    <div>
+                      <PencilSquare />
+                    </div>
+                    <div onClick={() => removeApartment(apartment)}>
+                      <Trash />
+                    </div>
                   </td>
                 </tr>
               ))}

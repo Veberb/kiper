@@ -10,4 +10,12 @@ const CREATE_APARTMENT = gql`
   }
 `;
 
-export default { CREATE_APARTMENT };
+const DELETE_APARTMENT = gql`
+  mutation DeleteApartment($_id: ID!) {
+    deleteApartment(_id: $_id) {
+      name
+    }
+  }
+`;
+
+export default { CREATE_APARTMENT, DELETE_APARTMENT };
