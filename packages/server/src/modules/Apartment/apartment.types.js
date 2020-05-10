@@ -7,7 +7,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    getApartments: [Apartment]
+    getApartments(name: String): [Apartment]
   }
 
   input ApartmentInput {

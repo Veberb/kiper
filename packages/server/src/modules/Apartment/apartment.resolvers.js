@@ -2,7 +2,12 @@ const Apartment = require('./apartmentSchema');
 
 const resolvers = {
   Query: {
-    getApartments: () => Apartment.find(),
+    getApartments: (parent, { name }) => {
+      const query = {};
+      if (name) query.name = new RegExp(name);
+
+      return Apartment.find(query);
+    },
   },
 
   Mutation: {
