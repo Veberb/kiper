@@ -3,8 +3,8 @@ import { Form } from 'react-bootstrap';
 
 import useDebounce from '../../utils/hooks/debounce';
 
-function SearchBar({ searchValue }) {
-  const [value, setValue] = useState('');
+function SearchBar({ searchValue, searchName }) {
+  const [value, setValue] = useState(searchName);
 
   const debouncedSearchValue = useDebounce(value, 2500);
 

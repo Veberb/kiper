@@ -1,34 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, use } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Container, Table } from 'react-bootstrap';
 import { PencilSquare, Trash } from 'react-bootstrap-icons';
 
 import SearchBar from '../../components/searchBar';
+import Modal from '../../components/modal/';
+import DeleteApartmentModal from '../../components/modal/Apartment/DeleteApartmentModal';
 import { ApartmentQuery, ApartmentMutation } from '../../services/apollo';
 import './index.css';
 
 export default function Home() {
   const [searchName, setSearchName] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [currentApartment, setCurrentApartment] = useState('');
+
   const { loading, error, data } = useQuery(ApartmentQuery.GET_APARTMENTS, { variables: { name: searchName } });
 
   const [deleteApartment] = useMutation(ApartmentMutation.DELETE_APARTMENT, {
-    refetchQueries: [{ query: ApartmentQuery.GET_APARTMENTS }],
+    refetchQueries: [{ query: ApartmentQuery.GET_APARTMENTS, variables: { name: searchName } }],
   });
 
+  const removeApartment = async () => {
+    await deleteApartment({ variables: { _id: currentApartment._id } });
+    setShowModal(false);
+  };
+
   if (loading) return 'Loading apartments';
-
-  const removeApartment = async ({ _id, name }) => {
-    await deleteApartment({ variables: { _id: _id } });
-  };
-
-  const onSearchValue = (value) => {
-    setSearchName(value);
-  };
 
   return (
     <React.Fragment>
       <Container>
-        <SearchBar searchValue={onSearchValue} />
+        <Modal show={showModal} title="Atenção" onHide={() => setShowModal(false)} onClick={removeApartment}>
+          <DeleteApartmentModal />
+        </Modal>
+        <SearchBar searchValue={setSearchName} searchName={searchName} />
         <Table striped bordered hover size="sm">
           <thead>
             <tr>
@@ -51,7 +56,12 @@ export default function Home() {
                     <div>
                       <PencilSquare />
                     </div>
-                    <div onClick={() => removeApartment(apartment)}>
+                    <div
+                      onClick={() => {
+                        setShowModal(true);
+                        setCurrentApartment(apartment);
+                      }}
+                    >
                       <Trash />
                     </div>
                   </td>
