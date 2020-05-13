@@ -4,9 +4,9 @@ import { Container, Table, Row, Col, Button } from 'react-bootstrap';
 import { PencilSquare, Trash } from 'react-bootstrap-icons';
 import { useHistory } from 'react-router-dom';
 
-import SearchBar from '../../components/searchBar';
-import Modal from '../../components/modal/';
-import DeleteApartmentModal from '../../components/modal/Apartment/DeleteApartmentModal';
+import SearchBar from '../../components/SearchBar';
+import Modal from '../../components/Modal';
+import DeleteApartmentModal from '../../components/Modal/Apartment/DeleteApartmentModal';
 import { ApartmentQuery, ApartmentMutation } from '../../services/apollo';
 import './index.css';
 
