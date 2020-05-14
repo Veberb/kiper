@@ -1,4 +1,4 @@
-import React, { useState, use } from 'react';
+import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Container, Table, Row, Col, Button } from 'react-bootstrap';
 import { PencilSquare, Trash } from 'react-bootstrap-icons';
@@ -64,7 +64,11 @@ export default function Home() {
                         return <td key={keyIndex}>{apartment[key]}</td>;
                       })}
                       <td className="actions">
-                        <div>
+                        <div
+                          onClick={() => {
+                            history.push(`/apartment/${apartment._id}`, { state: apartment });
+                          }}
+                        >
                           <PencilSquare />
                         </div>
                         <div

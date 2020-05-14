@@ -11,4 +11,14 @@ const GET_APARTMENTS = gql`
   }
 `;
 
-export default { GET_APARTMENTS };
+const GET_APARTMENT = gql`
+  query GetApartment($id: ID!) {
+    getApartment(id: $id) {
+      name
+      number
+      block
+    }
+  }
+`;
+
+export default { GET_APARTMENTS, GET_APARTMENT };

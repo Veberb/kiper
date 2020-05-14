@@ -4,10 +4,12 @@ const typeDefs = gql`
   type Mutation {
     createApartment(apartment: ApartmentInput!): Apartment!
     deleteApartment(_id: ID!): Apartment
+    updateApartment(apartment: ApartmentInput!, id: ID!): Apartment!
   }
 
   type Query {
     getApartments(name: String): [Apartment]
+    getApartment(id: ID!): Apartment
   }
 
   input ApartmentInput {
