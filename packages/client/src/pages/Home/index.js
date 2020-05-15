@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Container, Table, Row, Col, Button } from 'react-bootstrap';
-import { PencilSquare, Trash } from 'react-bootstrap-icons';
+import { PencilSquare, Trash, People } from 'react-bootstrap-icons';
 import { useHistory } from 'react-router-dom';
 
 import SearchBar from '../../components/SearchBar';
@@ -16,7 +16,7 @@ export default function Home() {
   const [currentApartment, setCurrentApartment] = useState('');
   const history = useHistory();
 
-  const { loading, error, data } = useQuery(ApartmentQuery.GET_APARTMENTS, { variables: { name: searchName } });
+  const { loading, data } = useQuery(ApartmentQuery.GET_APARTMENTS, { variables: { name: searchName } });
   const [deleteApartment] = useMutation(ApartmentMutation.DELETE_APARTMENT, {
     refetchQueries: [{ query: ApartmentQuery.GET_APARTMENTS, variables: { name: searchName } }],
   });
@@ -31,7 +31,13 @@ export default function Home() {
   return (
     <React.Fragment>
       <Container>
-        <Modal show={showModal} title="Atenção" onHide={() => setShowModal(false)} onClick={removeApartment}>
+        <Modal
+          show={showModal}
+          title="Atenção"
+          submit="Excluir"
+          onHide={() => setShowModal(false)}
+          onClick={removeApartment}
+        >
           <DeleteApartmentModal />
         </Modal>
         <Row>
@@ -66,7 +72,7 @@ export default function Home() {
                       <td className="actions">
                         <div
                           onClick={() => {
-                            history.push(`/apartment/${apartment._id}`, { state: apartment });
+                            history.push(`/apartment/${apartment._id}`);
                           }}
                         >
                           <PencilSquare />
@@ -78,6 +84,13 @@ export default function Home() {
                           }}
                         >
                           <Trash />
+                        </div>
+                        <div
+                          onClick={() => {
+                            history.push(`/apartment/${apartment._id}/resident`);
+                          }}
+                        >
+                          <People />
                         </div>
                       </td>
                     </tr>
