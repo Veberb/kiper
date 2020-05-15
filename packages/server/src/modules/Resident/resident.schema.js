@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const ResidentSchema = new Schema(
   {
     name: { type: String, required: true },
-    birth: { type: Number, required: true },
+    birth: { type: Date, required: true },
     phone: { type: Number, required: true },
     cpf: { type: Number, required: true },
     email: { type: String, required: true },
