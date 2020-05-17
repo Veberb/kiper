@@ -1,1 +1,2 @@
-export * from './apartment';
+export * from './Apartment';
+export * from './Resident';

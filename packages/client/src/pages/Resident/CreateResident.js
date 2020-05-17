@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { ResidentMutation } from '../../services/apollo';
 import ResidentForm from '../../components/Resident/ResidentForm';
+import { ResidentSchema } from '../../validation/';
 
 export default function CreateResident() {
   const { id } = useParams();
@@ -13,6 +14,7 @@ export default function CreateResident() {
   const history = useHistory();
 
   const formik = useFormik({
+    validationSchema: ResidentSchema,
     initialValues: {
       name: 'Lucas',
       birth: '',

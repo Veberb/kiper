@@ -80,7 +80,12 @@ const ResidentForm = ({ formik }) => {
           <Col>
             <Form.Group>
               <Form.Label>Responsável</Form.Label>
-              <Form.Control as="select" value={formik.values.responsible} onChange={formik.handleChange}>
+              <Form.Control
+                as="select"
+                name="responsible"
+                value={formik.values.responsible}
+                onChange={formik.handleChange}
+              >
                 <option value={true}>Sim</option>
                 <option value={false}>Não</option>
               </Form.Control>

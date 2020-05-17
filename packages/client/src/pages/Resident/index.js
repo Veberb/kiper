@@ -35,7 +35,7 @@ export default function ApartmentResident() {
             <SearchBar searchValue={setSearchName} searchName={searchName} />
           </Col>
           <Col sm={2}>
-            <Button onClick={() => history.push(`/apartment/${id}/resident/create`)}>Cadastrar</Button>
+            <Button onClick={() => history.push(`/resident/create`)}>Cadastrar</Button>
           </Col>
         </Row>
         <Row>
