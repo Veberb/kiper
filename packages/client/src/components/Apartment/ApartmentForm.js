@@ -48,7 +48,7 @@ const ApartmentForm = ({ formik }) => {
             </Form.Group>
           </Col>
         </Row>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={formik.isSubmitting}>
           Submit
         </Button>
       </Form>

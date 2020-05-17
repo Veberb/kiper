@@ -24,6 +24,7 @@ export default function EditResident() {
     enableReinitialize: true,
     onSubmit: async (values) => {
       await updateResident({ variables: { resident: values, id } });
+      formik.setSubmitting(false);
       history.goBack();
     },
   });

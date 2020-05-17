@@ -17,6 +17,7 @@ export default function Apartment() {
     validationSchema: CreateApartmentSchema,
     onSubmit: async (values) => {
       await createApartment({ variables: { apartment: values } });
+      formik.setSubmitting(false);
       history.push('/home');
     },
   });
