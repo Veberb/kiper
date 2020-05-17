@@ -6,10 +6,10 @@ const ResidentSchema = new Schema(
     name: { type: String, required: true },
     birth: { type: Date, required: true },
     phone: { type: Number, required: true },
-    cpf: { type: Number, required: true },
-    email: { type: String, required: true },
+    cpf: { type: Number, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
     apartment: { type: Schema.Types.ObjectId, ref: 'apartment', required: true },
-    responsible: { type: Number, required: true },
+    responsible: { type: Boolean, required: true },
   },
   { timestamps: true },
 );

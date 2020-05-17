@@ -5,11 +5,15 @@ const typeDefs = gql`
     listResidents(name: String, apartmentId: ID): [Resident]
   }
 
+  extend type Mutation {
+    createResident(resident: ResidentInput!): Resident!
+  }
+
   input ResidentInput {
     name: String!
-    birth: Int!
+    birth: String!
     phone: String!
-    cpf: Int
+    cpf: String!
     email: String!
     apartment: ID!
     responsible: Boolean!
