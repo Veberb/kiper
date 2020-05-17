@@ -26,11 +26,11 @@ export default function ApartmentResident() {
             <SearchBar searchValue={setSearchName} searchName={searchName} />
           </Col>
           <Col sm={2}>
-            <Button onClick={() => console.log()}>Cadastrar</Button>
+            <Button onClick={() => history.push(`/apartment/${id}/resident/create`)}>Cadastrar</Button>
           </Col>
         </Row>
         <Row>
-          <Col sm={12}>{!loading && !data.listResidents.length && <div> Nenhum morador encontrado :( </div>}</Col>
+          <Col sm={12}>{!loading && !data.listResidents.length && <div> Nenhum morador encontrado </div>}</Col>
           <Col sm={12}>
             {!loading && data.listResidents.length > 0 && <ListResident listResidents={data.listResidents} />}
           </Col>
