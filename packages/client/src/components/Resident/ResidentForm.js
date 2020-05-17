@@ -16,8 +16,9 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.name}
                 name="name"
+                isInvalid={!!formik.errors.name}
               />
-              {formik.errors.name && formik.touched.name ? <div>{formik.errors.name}</div> : null}
+              <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>
             </Form.Group>
           </Col>
           <Col>
@@ -29,8 +30,9 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.cpf}
                 name="cpf"
+                isInvalid={!!formik.errors.cpf}
               />
-              {formik.errors.cpf && formik.touched.cpf ? <div>{formik.errors.cpf}</div> : null}
+              <Form.Control.Feedback type="invalid">{formik.errors.cpf}</Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Row>
@@ -44,8 +46,9 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 name="email"
+                isInvalid={!!formik.errors.email}
               />
-              {formik.errors.email && formik.touched.email ? <div>{formik.errors.email}</div> : null}
+              <Form.Control.Feedback type="invalid">{formik.errors.email}</Form.Control.Feedback>
             </Form.Group>
           </Col>
           <Col>
@@ -57,9 +60,9 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.birth}
                 name="birth"
+                isInvalid={!!formik.errors.birth}
               />
-
-              {formik.errors.birth && formik.touched.birth ? <div>{formik.errors.birth}</div> : null}
+              <Form.Control.Feedback type="invalid">{formik.errors.birth}</Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Row>
@@ -73,8 +76,9 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.phone}
                 name="phone"
+                isInvalid={!!formik.errors.phone}
               />
-              {formik.errors.phone && formik.touched.phone ? <div>{formik.errors.phone}</div> : null}
+              <Form.Control.Feedback type="invalid">{formik.errors.phone}</Form.Control.Feedback>
             </Form.Group>
           </Col>
           <Col>
