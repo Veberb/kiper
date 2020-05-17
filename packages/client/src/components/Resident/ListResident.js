@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import { Table } from 'react-bootstrap';
 import { PencilSquare, Trash } from 'react-bootstrap-icons';
+import { useHistory, useParams } from 'react-router-dom';
 
 const ListResident = ({ listResidents = [] }) => {
+  const history = useHistory();
+  const params = useParams();
   return (
     <>
       <Table striped bordered hover size="sm">
@@ -24,7 +27,11 @@ const ListResident = ({ listResidents = [] }) => {
                 return <td key={keyIndex}>{resident[key]}</td>;
               })}
               <td className="actions">
-                <div onClick={() => {}}>
+                <div
+                  onClick={() => {
+                    history.push(`/resident/${resident._id}`, { apartment: params });
+                  }}
+                >
                   <PencilSquare />
                 </div>
                 <div onClick={() => {}}>

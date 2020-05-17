@@ -3,10 +3,12 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
   extend type Query {
     listResidents(name: String, apartmentId: ID): [Resident]
+    getResident(id: ID!): Resident
   }
 
   extend type Mutation {
     createResident(resident: ResidentInput!): Resident!
+    updateResident(resident: ResidentInput!, id: ID!): Resident
   }
 
   input ResidentInput {

@@ -8,4 +8,12 @@ const CREATE_RESIDENT = gql`
   }
 `;
 
-export default { CREATE_RESIDENT };
+const UPDATE_RESIDENT = gql`
+  mutation UpdateResident($resident: ResidentInput!, $id: ID!) {
+    updateResident(resident: $resident, id: $id) {
+      name
+    }
+  }
+`;
+
+export default { CREATE_RESIDENT, UPDATE_RESIDENT };

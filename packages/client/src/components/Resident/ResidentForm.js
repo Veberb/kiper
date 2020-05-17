@@ -58,6 +58,7 @@ const ResidentForm = ({ formik }) => {
                 value={formik.values.birth}
                 name="birth"
               />
+
               {formik.errors.birth && formik.touched.birth ? <div>{formik.errors.birth}</div> : null}
             </Form.Group>
           </Col>
@@ -77,7 +78,7 @@ const ResidentForm = ({ formik }) => {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Group>
               <Form.Label>Responsável</Form.Label>
               <Form.Control as="select" value={formik.values.responsible} onChange={formik.handleChange}>
                 <option value={true}>Sim</option>

@@ -1,5 +1,5 @@
 const Resident = require('./resident.schema');
-const { UserInputError } = require('apollo-server');
+const { uniqueResponsible } = require('./resident.validation');
 
 const resolvers = {
   Query: {
@@ -10,15 +10,18 @@ const resolvers = {
 
       return Resident.find(query).populate('apartment');
     },
+    getResident: (parent, { id }) => {
+      return Resident.findById(id);
+    },
   },
   Mutation: {
-    createResident: (parent, { resident }) => {
-      console.log('oi');
-      //#TODO: Fazer validação se ja existe responsavel
-      /*if (resident.responsible) {
-        return new UserInputError('Já existe um responsavel cadastrado para esse apartamento', 409);
-      }*/
+    createResident: async (parent, { resident }) => {
+      await uniqueResponsible(redisent);
       return new Resident(resident).save();
+    },
+    updateResident: async (parent, { resident, id }) => {
+      await uniqueResponsible(resident);
+      return Resident.findByIdAndUpdate(id, resident);
     },
   },
 };

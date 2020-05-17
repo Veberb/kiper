@@ -15,6 +15,7 @@ export default function ApartmentResident() {
 
   const { loading, data } = useQuery(ResidentQuery.LIST_RESIDENTS, {
     variables: { name: searchName, apartmentId: id },
+    fetchPolicy: 'cache-and-network',
   });
 
   if (loading) return 'Loading Residents';

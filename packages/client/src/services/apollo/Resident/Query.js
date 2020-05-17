@@ -11,4 +11,18 @@ const LIST_RESIDENTS = gql`
   }
 `;
 
-export default { LIST_RESIDENTS };
+const GET_RESIDENT = gql`
+  query GetResident($id: ID!) {
+    getResident(id: $id) {
+      name
+      birth
+      phone
+      cpf
+      email
+      apartment
+      responsible
+    }
+  }
+`;
+
+export default { LIST_RESIDENTS, GET_RESIDENT };
