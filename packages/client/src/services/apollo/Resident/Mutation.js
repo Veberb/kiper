@@ -16,4 +16,12 @@ const UPDATE_RESIDENT = gql`
   }
 `;
 
-export default { CREATE_RESIDENT, UPDATE_RESIDENT };
+const DELETE_RESIDENT = gql`
+  mutation DeleteResident($id: ID!) {
+    deleteResident(id: $id) {
+      name
+    }
+  }
+`;
+
+export default { CREATE_RESIDENT, UPDATE_RESIDENT, DELETE_RESIDENT };

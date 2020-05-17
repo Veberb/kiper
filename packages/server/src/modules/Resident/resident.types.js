@@ -9,6 +9,7 @@ const typeDefs = gql`
   extend type Mutation {
     createResident(resident: ResidentInput!): Resident!
     updateResident(resident: ResidentInput!, id: ID!): Resident
+    deleteResident(id: ID!): Resident
   }
 
   input ResidentInput {

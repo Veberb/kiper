@@ -4,9 +4,10 @@ import { Table } from 'react-bootstrap';
 import { PencilSquare, Trash } from 'react-bootstrap-icons';
 import { useHistory, useParams } from 'react-router-dom';
 
-const ListResident = ({ listResidents = [] }) => {
+const ListResident = ({ listResidents = [], remove }) => {
   const history = useHistory();
   const params = useParams();
+
   return (
     <>
       <Table striped bordered hover size="sm">
@@ -34,7 +35,11 @@ const ListResident = ({ listResidents = [] }) => {
                 >
                   <PencilSquare />
                 </div>
-                <div onClick={() => {}}>
+                <div
+                  onClick={() => {
+                    remove(resident);
+                  }}
+                >
                   <Trash />
                 </div>
               </td>

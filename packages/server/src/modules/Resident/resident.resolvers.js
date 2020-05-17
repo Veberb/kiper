@@ -23,6 +23,9 @@ const resolvers = {
       await uniqueResponsible(resident);
       return Resident.findByIdAndUpdate(id, resident);
     },
+    deleteResident: async (parent, { id }) => {
+      return Resident.findByIdAndDelete(id);
+    },
   },
 };
 
