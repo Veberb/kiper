@@ -21,7 +21,13 @@ const typeDefs = gql`
 
   type Resident {
     _id: ID
-    name: String
+    name: String!
+    birth: String!
+    phone: String!
+    cpf: String!
+    email: String!
+    apartment: ID!
+    responsible: Boolean!
   }
 `;
 

@@ -11,8 +11,8 @@ const ListResident = ({ listResidents = [] }) => {
           <tr>
             <th>#</th>
             <th>Nome</th>
-            <th>Número</th>
-            <th>Bloco</th>
+            <th>Email</th>
+            <th>Responsável</th>
             <th>Ação</th>
           </tr>
         </thead>
