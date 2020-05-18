@@ -1,6 +1,7 @@
 import React from 'react';
-
 import { Form, Row, Col, Button } from 'react-bootstrap';
+
+import ApartmentSelect from '../Apartment/ApartmentSelect';
 
 const ResidentForm = ({ formik }) => {
   return (
@@ -93,6 +94,12 @@ const ResidentForm = ({ formik }) => {
                 <option value={true}>Sim</option>
                 <option value={false}>Não</option>
               </Form.Control>
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group>
+              <Form.Label>Apartamento</Form.Label>
+              <ApartmentSelect formik={formik} />
             </Form.Group>
           </Col>
         </Row>

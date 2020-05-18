@@ -26,7 +26,6 @@ export default function CreateResident() {
     },
 
     onSubmit: async (values) => {
-      values.apartment = id;
       await createResident({ variables: { resident: values } });
       formik.setSubmitting(false);
       history.goBack();

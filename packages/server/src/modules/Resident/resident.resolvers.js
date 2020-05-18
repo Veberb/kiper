@@ -17,7 +17,7 @@ const resolvers = {
   },
   Mutation: {
     createResident: async (parent, { resident }) => {
-      await uniqueResponsible(redisent);
+      await uniqueResponsible(resident);
       return new Resident(resident).save();
     },
     updateResident: async (parent, { resident, id }) => {
