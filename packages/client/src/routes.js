@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Apartment from './pages/Apartment';
 import EditApartment from './pages/Apartment/EditApartment';
-import ListApartmentResidents from './pages/Resident';
+import ListResidents from './pages/Resident';
 import CreateResident from './pages/Resident/CreateResident';
 import EditResident from './pages/Resident/EditResident';
 import Home from './pages/Home';
@@ -18,7 +18,8 @@ const Routes = () => {
               <Route path="/home" component={Home} />
               <Route path="/resident/create" component={CreateResident} />
               <Route path="/resident/:id" component={EditResident} />
-              <Route path="/apartment/:id/resident" component={ListApartmentResidents} />
+              <Route path="/resident" component={ListResidents} />
+              <Route path="/apartment/:id/resident" component={ListResidents} />
               <Route path="/apartment/:id" component={EditApartment} />
               <Route path="/apartment" component={Apartment} />
             </Switch>
