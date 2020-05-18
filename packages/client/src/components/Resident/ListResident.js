@@ -7,7 +7,6 @@ import { useHistory, useParams } from 'react-router-dom';
 const ListResident = ({ listResidents = [], remove }) => {
   const history = useHistory();
   const params = useParams();
-
   return (
     <>
       <Table striped bordered hover size="sm">
@@ -17,6 +16,7 @@ const ListResident = ({ listResidents = [], remove }) => {
             <th>Nome</th>
             <th>Email</th>
             <th>Responsável</th>
+            <th>Apartmento</th>
             <th>Ação</th>
           </tr>
         </thead>
@@ -25,7 +25,7 @@ const ListResident = ({ listResidents = [], remove }) => {
             <tr key={index}>
               {Object.keys(resident).map((key, keyIndex) => {
                 if (!keyIndex) return <td key={keyIndex}>{index + 1}</td>;
-                return <td key={keyIndex}>{resident[key]}</td>;
+                return <td key={keyIndex}>{resident[key].toString()}</td>;
               })}
               <td className="actions">
                 <div

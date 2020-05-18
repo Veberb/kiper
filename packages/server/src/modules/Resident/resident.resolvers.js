@@ -1,4 +1,5 @@
 const Resident = require('./resident.schema');
+const Apartment = require('../Apartment/apartmentSchema');
 const { uniqueResponsible } = require('./resident.validation');
 
 const resolvers = {
@@ -8,7 +9,7 @@ const resolvers = {
       if (name) query.name = new RegExp(name);
       if (apartmentId) query.apartment = apartmentId;
 
-      return Resident.find(query).populate('apartment');
+      return Resident.find(query);
     },
     getResident: (parent, { id }) => {
       return Resident.findById(id);
@@ -25,6 +26,12 @@ const resolvers = {
     },
     deleteResident: async (parent, { id }) => {
       return Resident.findByIdAndDelete(id);
+    },
+  },
+  Resident: {
+    apartmentName: async ({ apartment }) => {
+      const { name } = await Apartment.findById(apartment);
+      return name;
     },
   },
 };

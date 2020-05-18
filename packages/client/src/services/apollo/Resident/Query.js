@@ -7,6 +7,7 @@ const LIST_RESIDENTS = gql`
       name
       email
       responsible
+      apartmentName
     }
   }
 `;

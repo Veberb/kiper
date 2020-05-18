@@ -31,6 +31,7 @@ const typeDefs = gql`
     email: String!
     apartment: ID!
     responsible: Boolean!
+    apartmentName: String!
   }
 `;
 
