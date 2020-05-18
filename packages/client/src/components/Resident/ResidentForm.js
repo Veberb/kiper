@@ -88,6 +88,7 @@ const ResidentForm = ({ formik }) => {
               <Form.Control
                 as="select"
                 name="responsible"
+                type="checkbox"
                 value={formik.values.responsible}
                 onChange={formik.handleChange}
               >

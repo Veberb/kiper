@@ -4,10 +4,12 @@ const { uniqueResponsible } = require('./resident.validation');
 
 const resolvers = {
   Query: {
-    listResidents: (parent, { name, apartmentId }) => {
+    listResidents: (parent, { name, apartmentId, responsible }) => {
       const query = {};
+
       if (name) query.name = new RegExp(name);
       if (apartmentId) query.apartment = apartmentId;
+      if (responsible) query.responsible = responsible;
 
       return Resident.find(query);
     },

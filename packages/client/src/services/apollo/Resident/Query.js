@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 const LIST_RESIDENTS = gql`
-  query ListResidents($name: String, $apartmentId: ID) {
-    listResidents(name: $name, apartmentId: $apartmentId) {
+  query ListResidents($name: String, $apartmentId: ID, $responsible: String) {
+    listResidents(name: $name, apartmentId: $apartmentId, responsible: $responsible) {
       _id
       name
       email

@@ -6,7 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 const ListResident = ({ listResidents = [], remove }) => {
   const history = useHistory();
-  const params = useParams();
+
   return (
     <>
       <Table striped bordered hover size="sm">
@@ -30,7 +30,7 @@ const ListResident = ({ listResidents = [], remove }) => {
               <td className="actions">
                 <div
                   onClick={() => {
-                    history.push(`/resident/${resident._id}`, { apartment: params });
+                    history.push(`/resident/${resident._id}`);
                   }}
                 >
                   <PencilSquare />
