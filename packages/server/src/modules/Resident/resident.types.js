@@ -19,7 +19,7 @@ const typeDefs = gql`
     cpf: String!
     email: String!
     apartment: ID!
-    responsible: Boolean!
+    responsible: String!
   }
 
   type Resident {
@@ -30,7 +30,7 @@ const typeDefs = gql`
     cpf: String!
     email: String!
     apartment: ID!
-    responsible: Boolean!
+    responsible: String!
     apartmentName: String!
   }
 `;
