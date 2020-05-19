@@ -9,6 +9,7 @@ import CreateResident from './pages/Resident/CreateResident';
 import EditResident from './pages/Resident/EditResident';
 
 import RegisterUser from './pages/Auth/Register';
+import LoginUser from './pages/Auth/Login';
 
 import Home from './pages/Home';
 
@@ -21,6 +22,7 @@ const Routes = () => {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/register" component={RegisterUser} />
+              <Route path="/login" component={LoginUser} />
               <Route path="/resident/create" component={CreateResident} />
               <Route path="/resident/:id" component={EditResident} />
               <Route path="/resident" component={ListResidents} />
