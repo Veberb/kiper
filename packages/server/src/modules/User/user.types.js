@@ -3,6 +3,7 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
   extend type Mutation {
     createUser(user: UserInput!): User!
+    signIn(user: UserInput!): String!
   }
 
   input UserInput {
