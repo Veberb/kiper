@@ -18,5 +18,6 @@ export { default as ApartmentMutation } from './Apartment/mutation';
 export { default as ApartmentQuery } from './Apartment/query';
 export { default as ResidentQuery } from './Resident/Query';
 export { default as ResidentMutation } from './Resident/Mutation';
+export { default as UserMutation } from './User/Mutation';
 
 export default client;
