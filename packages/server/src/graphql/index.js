@@ -6,6 +6,9 @@ const ApartmentTypes = require('../modules/Apartment/apartment.types');
 const ResidentResolver = require('../modules/Resident/resident.resolvers');
 const ResidentTypes = require('../modules/Resident/resident.types');
 
+const UserResolver = require('../modules/User/user.resolvers');
+const UserTypes = require('../modules/User/user.types');
+
 const linkSchema = gql`
   type Query {
     _: Boolean
@@ -16,6 +19,6 @@ const linkSchema = gql`
 `;
 
 module.exports = {
-  typeDefs: [linkSchema, ApartmentTypes, ResidentTypes],
-  resolvers: [ApartmentResolver, ResidentResolver],
+  typeDefs: [linkSchema, ApartmentTypes, ResidentTypes, UserTypes],
+  resolvers: [ApartmentResolver, ResidentResolver, UserResolver],
 };
