@@ -7,5 +7,8 @@ export const ResidentSchema = Yup.object().shape({
   cpf: Yup.string().cpf().required('Campo obrigatório'),
   email: Yup.string().email('Email inválido').required('Campo obrigatório'),
   phone: Yup.string().phone().required(),
-  birth: Yup.date().max(moment().add(1, 'days'), 'Data não pode ser maior que hoje'),
+  birth: Yup.date()
+    .max(moment().add(1, 'days'), 'Data não pode ser maior que hoje')
+    .required('É necessário escolher a data'),
+  apartment: Yup.string().min(2, 'Selecione um apartamento').required('Favor informar apartamento'),
 });
