@@ -22,7 +22,7 @@ const Routes = () => {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/register" component={RegisterUser} />
-              <Route path="/login" component={LoginUser} />
+              <Route path="/" component={LoginUser} />
               <Route path="/resident/create" component={CreateResident} />
               <Route path="/resident/:id" component={EditResident} />
               <Route path="/resident" component={ListResidents} />
