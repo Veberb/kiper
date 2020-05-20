@@ -3,6 +3,7 @@ import { Container, Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useMutation } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 
 import { UserMutation } from '../../services/apollo';
 import UserForm from '../../components/User/UserForm';
@@ -11,13 +12,15 @@ import { UserSchema } from '../../validation/';
 
 export default function RegisterUser() {
   const history = useHistory();
+  const { addToast } = useToasts();
 
   const [registerUser] = useMutation(UserMutation.CREATE_USER, {
-    onError: () => {
-      console.log('erro ;)');
+    onError: (err) => {
+      addToast(err.graphQLErrors[0].message, { appearance: 'error' });
     },
-    onCompleted: () => {
+    onCompleted: (val) => {
       formik.setSubmitting(false);
+      addToast('Usuário cadastrado!', { appearance: 'success' });
       history.push('/');
     },
   });
