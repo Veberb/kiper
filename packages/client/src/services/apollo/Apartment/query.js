@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-const GET_APARTMENTS = gql`
-  query GetApartments($name: String) {
-    getApartments(name: $name) {
+const LIST_APARTMENTS = gql`
+  query ListApartments($name: String) {
+    listApartments(name: $name) {
       _id
       name
       number
@@ -21,4 +21,4 @@ const GET_APARTMENT = gql`
   }
 `;
 
-export default { GET_APARTMENTS, GET_APARTMENT };
+export default { LIST_APARTMENTS, GET_APARTMENT };
