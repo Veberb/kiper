@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { Table } from 'react-bootstrap';
 import { PencilSquare, Trash } from 'react-bootstrap-icons';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const ListResident = ({ listResidents = [], remove }) => {
   const history = useHistory();
@@ -47,7 +47,6 @@ const ListResident = ({ listResidents = [], remove }) => {
           ))}
         </tbody>
       </Table>
-      ;
     </>
   );
 };
