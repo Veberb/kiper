@@ -8,7 +8,7 @@ const typeDefs = gql`
   }
 
   extend type Query {
-    getApartments(name: String): [Apartment]
+    listApartments(name: String): [Apartment]
     getApartment(id: ID!): Apartment
   }
 
