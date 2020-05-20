@@ -23,7 +23,7 @@ const resolvers = {
       return new Resident(resident).save();
     },
     updateResident: async (parent, { resident, id }) => {
-      await uniqueResponsible(resident);
+      await uniqueResponsible(resident, id);
       return Resident.findByIdAndUpdate(id, resident);
     },
     deleteResident: async (parent, { id }) => {

@@ -18,7 +18,7 @@ const typeDefs = gql`
     phone: String!
     cpf: String!
     email: String!
-    apartment: ID!
+    apartment: String!
     responsible: String!
   }
 
