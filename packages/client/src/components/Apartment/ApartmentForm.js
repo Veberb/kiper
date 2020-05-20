@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import { Form, Row, Col } from 'react-bootstrap';
+import SpinnerButton from '../../components/Button';
 
 const ApartmentForm = ({ formik }) => {
   return (
@@ -48,9 +49,7 @@ const ApartmentForm = ({ formik }) => {
             </Form.Group>
           </Col>
         </Row>
-        <Button variant="primary" type="submit" disabled={formik.isSubmitting}>
-          Submit
-        </Button>
+        <SpinnerButton isSubmitting={formik.isSubmitting} />
       </Form>
     </>
   );
