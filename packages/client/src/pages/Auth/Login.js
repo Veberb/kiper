@@ -9,6 +9,7 @@ import { UserMutation } from '../../services/apollo';
 import UserForm from '../../components/User/UserForm';
 import SpinnerButton from '../../components/Button';
 import { UserSchema } from '../../validation/';
+import { setToken } from '../../services/auth';
 
 export default function RegisterUser() {
   const history = useHistory();
@@ -18,7 +19,8 @@ export default function RegisterUser() {
     onError: (err) => {
       addToast(err.graphQLErrors[0].message, { appearance: 'error' });
     },
-    onCompleted: (val) => {
+    onCompleted: ({ signIn }) => {
+      setToken(signIn);
       formik.setSubmitting(false);
       addToast('Bem vindo :]', { appearance: 'success' });
       history.push('/home');

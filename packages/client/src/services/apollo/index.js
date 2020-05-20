@@ -1,6 +1,5 @@
 import ApolloClient from 'apollo-boost';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
 import { getToken } from '../auth';
 
 const client = new ApolloClient({
@@ -8,6 +7,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache({
     addTypename: false,
   }),
+  onError: (err) => {
+    if (
+      err.graphQLErrors[0] &&
+      err.graphQLErrors[0].extensions &&
+      err.graphQLErrors[0].extensions.code === 'UNAUTHENTICATED'
+    ) {
+      window.location.pathname = '/';
+    }
+  },
   request: (operation) => {
     const token = getToken();
     operation.setContext({ headers: { 'kiper-token': token } });

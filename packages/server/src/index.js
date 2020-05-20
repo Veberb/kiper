@@ -1,11 +1,17 @@
 const { ApolloServer } = require('apollo-server');
-require('./database');
+const { verifyToken } = require('./modules/Auth');
 
+require('./database');
 const { typeDefs, resolvers } = require('./graphql');
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => {
+    const token = req.headers['kiper-token'] || '';
+    if (token) verifyToken({ req, token });
+    return { authUser: req.authUser };
+  },
 });
 
 server

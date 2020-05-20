@@ -1,28 +1,29 @@
 const Apartment = require('./apartmentSchema');
+const { authenticated } = require('../Auth');
 
 const resolvers = {
   Query: {
-    listApartments: (parent, { name }) => {
+    listApartments: authenticated((parent, { name }) => {
       const query = {};
       if (name) query.name = new RegExp(name);
 
       return Apartment.find(query);
-    },
-    getApartment: (parent, { id }) => {
+    }),
+    getApartment: authenticated((parent, { id }) => {
       return Apartment.findById(id);
-    },
+    }),
   },
 
   Mutation: {
-    createApartment: (parent, { apartment }) => {
+    createApartment: authenticated((parent, { apartment }) => {
       return new Apartment(apartment).save();
-    },
-    updateApartment: (parent, { apartment, id }) => {
+    }),
+    updateApartment: authenticated((parent, { apartment, id }) => {
       return Apartment.findByIdAndUpdate(id, apartment);
-    },
-    deleteApartment: (parent, { _id }) => {
+    }),
+    deleteApartment: authenticated((parent, { _id }) => {
       return Apartment.findOneAndDelete({ _id });
-    },
+    }),
   },
 };
 
