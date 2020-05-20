@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useHistory, useParams } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 
 import { CreateApartmentSchema } from '../../validation';
 import { ApartmentMutation, ApartmentQuery } from '../../services/apollo';
@@ -10,6 +11,8 @@ import ApartmentForm from '../../components/Apartment/ApartmentForm';
 
 export default function Apartment() {
   const { id } = useParams();
+  const { addToast } = useToasts();
+
   const [initialValues, setInitialValues] = useState({ name: '', block: '', number: 0 });
 
   const formik = useFormik({
@@ -18,8 +21,6 @@ export default function Apartment() {
     validationSchema: CreateApartmentSchema,
     onSubmit: async (values) => {
       await updateApartment({ variables: { apartment: values, id } });
-      formik.setSubmitting(false);
-      history.push('/apartment');
     },
   });
 
@@ -30,9 +31,19 @@ export default function Apartment() {
   const { loading } = useQuery(ApartmentQuery.GET_APARTMENT, {
     variables: { id },
     onCompleted: setFormikInitialValue,
+    fetchPolicy: 'cache-and-network',
   });
 
-  const [updateApartment] = useMutation(ApartmentMutation.UPDATE_APARTMENT);
+  const [updateApartment] = useMutation(ApartmentMutation.UPDATE_APARTMENT, {
+    onError: (err) => {
+      addToast(err.graphQLErrors[0].message, { appearance: 'error' });
+    },
+    onCompleted: () => {
+      formik.setSubmitting(false);
+      addToast('Apartamento atualizado', { appearance: 'success' });
+      history.push('/apartment');
+    },
+  });
   const history = useHistory();
 
   if (loading) return 'Loading apartment';
