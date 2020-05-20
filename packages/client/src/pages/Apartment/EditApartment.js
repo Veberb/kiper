@@ -19,7 +19,7 @@ export default function Apartment() {
     onSubmit: async (values) => {
       await updateApartment({ variables: { apartment: values, id } });
       formik.setSubmitting(false);
-      history.push('/home');
+      history.push('/apartment');
     },
   });
 
@@ -27,7 +27,7 @@ export default function Apartment() {
     setInitialValues({ ...value.getApartment });
   };
 
-  const { loading, data } = useQuery(ApartmentQuery.GET_APARTMENT, {
+  const { loading } = useQuery(ApartmentQuery.GET_APARTMENT, {
     variables: { id },
     onCompleted: setFormikInitialValue,
   });

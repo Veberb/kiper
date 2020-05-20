@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Apartment from './pages/Apartment';
+import Apartment from './pages/Apartment/CreateApartment';
 import EditApartment from './pages/Apartment/EditApartment';
+import ListApartment from './pages/Apartment';
 
 import ListResidents from './pages/Resident';
 import CreateResident from './pages/Resident/CreateResident';
@@ -20,15 +21,15 @@ const Routes = () => {
         <div className="auth-wrapper">
           <div className="auth-inner">
             <Switch>
-              <Route path="/home" component={Home} />
               <Route path="/register" component={RegisterUser} />
-              <Route path="/" component={LoginUser} />
               <Route path="/resident/create" component={CreateResident} />
               <Route path="/resident/:id" component={EditResident} />
               <Route path="/resident" component={ListResidents} />
-              <Route path="/apartment/:id/resident" component={ListResidents} />
+              <Route path="/apartment/create" component={Apartment} />
               <Route path="/apartment/:id" component={EditApartment} />
-              <Route path="/apartment" component={Apartment} />
+              <Route path="/apartment/:id/resident" component={ListResidents} />
+              <Route path="/apartment" component={ListApartment} />
+              <Route path="/" component={LoginUser} />
             </Switch>
           </div>
         </div>
