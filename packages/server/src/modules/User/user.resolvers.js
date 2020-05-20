@@ -6,6 +6,9 @@ const User = require('./user.schema');
 const resolvers = {
   Mutation: {
     createUser: async (parent, { user }) => {
+      const foundUser = await User.countDocuments({ email: user.email });
+      if (foundUser) throw new UserInputError('Já existe um usuário com o email informado');
+
       const hashPassword = await User.hashPassword(user);
       return new User({ ...user, password: hashPassword }).save();
     },
