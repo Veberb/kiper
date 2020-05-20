@@ -29,7 +29,7 @@ export default function ApartmentResident() {
     await deleteResident({ variables: { id: _id } });
   };
 
-  if (loading) return 'Loading Residents';
+  if (loading) return 'Carregando moradores';
   return (
     <React.Fragment>
       <Container>
