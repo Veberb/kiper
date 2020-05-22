@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import './index.css';
 import SearchBar from '../../components/SearchBar';
 import ListResident from '../../components/Resident/ListResident';
-
+import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
 import { ResidentQuery, ResidentMutation } from '../../services/apollo';
 
 export default function ApartmentResident() {
@@ -13,6 +13,18 @@ export default function ApartmentResident() {
   const [responsible, setResponsible] = useState('');
   const { id } = useParams();
   const history = useHistory();
+
+  useBreadcrumb([
+    {
+      title: 'Home',
+      to: '/home',
+    },
+    {
+      title: 'Apartamentos',
+      to: '/apartment',
+    },
+    { title: 'Moradores' },
+  ]);
 
   const { loading, data } = useQuery(ResidentQuery.LIST_RESIDENTS, {
     variables: { name: searchName, apartmentId: id, responsible },
