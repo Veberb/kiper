@@ -8,10 +8,22 @@ import { useToasts } from 'react-toast-notifications';
 import { CreateApartmentSchema } from '../../validation';
 import { ApartmentMutation, ApartmentQuery } from '../../services/apollo';
 import ApartmentForm from '../../components/Apartment/ApartmentForm';
+import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
 
 export default function Apartment() {
   const { id } = useParams();
   const { addToast } = useToasts();
+  useBreadcrumb([
+    {
+      title: 'Home',
+      to: '/home',
+    },
+    {
+      title: 'Apartamentos',
+      to: '/apartment',
+    },
+    { title: 'Edição' },
+  ]);
 
   const [initialValues, setInitialValues] = useState({ name: '', block: '', number: 0 });
 
