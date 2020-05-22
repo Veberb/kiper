@@ -9,10 +9,21 @@ import { UserMutation } from '../../services/apollo';
 import UserForm from '../../components/User/UserForm';
 import SpinnerButton from '../../components/Button';
 import { UserSchema } from '../../validation/';
+import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
 
 export default function RegisterUser() {
   const history = useHistory();
   const { addToast } = useToasts();
+
+  useBreadcrumb([
+    {
+      title: 'Login',
+      to: '/',
+    },
+    {
+      title: 'Cadastro',
+    },
+  ]);
 
   const [registerUser] = useMutation(UserMutation.CREATE_USER, {
     onError: (err) => {
