@@ -16,12 +16,8 @@ export default function EditResident() {
 
   useBreadcrumb([
     {
-      title: 'Home',
-      to: '/home',
-    },
-    {
-      title: 'Moradores',
-      to: '/resident',
+      title: 'Apartamento',
+      to: '/apartment',
     },
     { title: 'Edição' },
   ]);

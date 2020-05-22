@@ -12,8 +12,6 @@ import EditResident from './pages/Resident/EditResident';
 import RegisterUser from './pages/Auth/Register';
 import LoginUser from './pages/Auth/Login';
 
-import Home from './pages/Home';
-
 const Routes = () => {
   return (
     <Router>

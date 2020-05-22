@@ -21,10 +21,6 @@ export default function Home() {
 
   useBreadcrumb([
     {
-      title: 'Home',
-      to: '/home',
-    },
-    {
       title: 'Apartamentos',
     },
   ]);

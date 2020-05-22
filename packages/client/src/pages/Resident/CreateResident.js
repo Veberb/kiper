@@ -15,12 +15,8 @@ export default function CreateResident() {
   const { addToast } = useToasts();
   useBreadcrumb([
     {
-      title: 'Home',
-      to: '/home',
-    },
-    {
-      title: 'Moradores',
-      to: '/resident',
+      title: 'Apartamentos',
+      to: '/apartment',
     },
     { title: 'Cadastro' },
   ]);

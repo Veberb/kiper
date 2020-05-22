@@ -15,10 +15,6 @@ export default function Apartment() {
   const { addToast } = useToasts();
   useBreadcrumb([
     {
-      title: 'Home',
-      to: '/home',
-    },
-    {
       title: 'Apartamentos',
       to: '/apartment',
     },

@@ -16,10 +16,6 @@ export default function ApartmentResident() {
 
   useBreadcrumb([
     {
-      title: 'Home',
-      to: '/home',
-    },
-    {
       title: 'Apartamentos',
       to: '/apartment',
     },
