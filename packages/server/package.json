@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect src/index.js"
+    "start": "nodemon --inspect src/index.js",
+    "test": "env NODE_ENV=test mocha ./__specs__/*/*.spec.js "
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,10 @@
     "nodemon": "^2.0.3"
   },
   "devDependencies": {
-    "@kiper/eslint-config": "1.0.0"
+    "@kiper/eslint-config": "1.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2",
+    "mongodb-memory-server": "^6.6.1",
+    "supertest": "^4.0.2"
   }
 }
