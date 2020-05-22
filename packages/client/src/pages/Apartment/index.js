@@ -9,6 +9,8 @@ import Modal from '../../components/Modal';
 import DeleteApartmentModal from '../../components/Modal/Apartment/DeleteApartmentModal';
 import ApartmentList from '../../components/Apartment/ApartmentList';
 import { ApartmentQuery, ApartmentMutation } from '../../services/apollo';
+import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
+
 import './index.css';
 
 export default function Home() {
@@ -16,6 +18,16 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [currentApartment, setCurrentApartment] = useState('');
   const history = useHistory();
+
+  useBreadcrumb([
+    {
+      title: 'Home',
+      to: '/home',
+    },
+    {
+      title: 'Apartamentos',
+    },
+  ]);
 
   const { loading, data } = useQuery(ApartmentQuery.LIST_APARTMENTS, {
     variables: { name: searchName },
