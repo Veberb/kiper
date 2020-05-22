@@ -8,10 +8,22 @@ import { useToasts } from 'react-toast-notifications';
 import { ResidentMutation } from '../../services/apollo';
 import ResidentForm from '../../components/Resident/ResidentForm';
 import { ResidentSchema } from '../../validation/';
+import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
 
 export default function CreateResident() {
   const history = useHistory();
   const { addToast } = useToasts();
+  useBreadcrumb([
+    {
+      title: 'Home',
+      to: '/home',
+    },
+    {
+      title: 'Moradores',
+      to: '/resident',
+    },
+    { title: 'Cadastro' },
+  ]);
 
   const [createResident] = useMutation(ResidentMutation.CREATE_RESIDENT, {
     onError: (err) => {
