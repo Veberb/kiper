@@ -1,5 +1,7 @@
-const { ApolloServer } = require('apollo-server');
+const { ApolloServer } = require('apollo-server-express');
 const { verifyToken } = require('./modules/Auth');
+const express = require('express');
+const app = express();
 
 require('./database');
 const { typeDefs, resolvers } = require('./graphql');
@@ -14,11 +16,8 @@ const server = new ApolloServer({
   },
 });
 
-server
-  .listen()
-  .then(({ url }) => {
-    console.log(`Server ready at ${url}`);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+server.applyMiddleware({ app });
+
+app.listen(4000);
+
+module.exports = app;
