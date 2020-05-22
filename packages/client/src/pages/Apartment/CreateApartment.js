@@ -8,11 +8,22 @@ import { useToasts } from 'react-toast-notifications';
 import { CreateApartmentSchema } from '../../validation';
 import { ApartmentMutation } from '../../services/apollo';
 import ApartmentForm from '../../components/Apartment/ApartmentForm';
+import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
 
 export default function Apartment() {
   const history = useHistory();
   const { addToast } = useToasts();
-
+  useBreadcrumb([
+    {
+      title: 'Home',
+      to: '/home',
+    },
+    {
+      title: 'Apartamentos',
+      to: '/apartment',
+    },
+    { title: 'Cadastro' },
+  ]);
   const [createApartment] = useMutation(ApartmentMutation.CREATE_APARTMENT, {
     onError: (err) => {
       addToast(err.graphQLErrors[0].message, { appearance: 'error' });
