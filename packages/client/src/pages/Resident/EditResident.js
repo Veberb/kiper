@@ -4,15 +4,27 @@ import { useFormik } from 'formik';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useHistory, useParams } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
-
 import moment from 'moment';
 
 import { ResidentMutation, ResidentQuery } from '../../services/apollo';
 import ResidentForm from '../../components/Resident/ResidentForm';
+import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
 
 export default function EditResident() {
   const { id } = useParams();
   const { addToast } = useToasts();
+
+  useBreadcrumb([
+    {
+      title: 'Home',
+      to: '/home',
+    },
+    {
+      title: 'Moradores',
+      to: '/resident',
+    },
+    { title: 'Edição' },
+  ]);
 
   const [initialValues, setInitialValues] = useState({
     name: '',
