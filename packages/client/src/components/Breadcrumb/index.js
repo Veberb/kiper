@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Breadcrumb, BreadcrumbItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
@@ -13,7 +13,7 @@ export default function BreadcrumbHeader() {
       <Breadcrumb>
         {!!current.length &&
           current.map(({ title, to }, index, arr) => (
-            <BreadcrumbItem key={index} active={arr.length === index + 1}>
+            <BreadcrumbItem key={index} active={arr.length === index + 1} linkAs="div">
               <Wrap to={to}>{title}</Wrap>
             </BreadcrumbItem>
           ))}
