@@ -11,7 +11,7 @@ import SpinnerButton from '../../components/Button';
 import { UserSchema } from '../../validation/';
 import { setToken } from '../../services/auth';
 
-export default function RegisterUser() {
+export default function LoginUser() {
   const history = useHistory();
   const { addToast } = useToasts();
 
@@ -23,7 +23,7 @@ export default function RegisterUser() {
       setToken(signIn);
       formik.setSubmitting(false);
       addToast('Bem vindo :]', { appearance: 'success' });
-      history.push('/home');
+      history.push('/apartment');
     },
   });
 

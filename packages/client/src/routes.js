@@ -17,23 +17,17 @@ import Home from './pages/Home';
 const Routes = () => {
   return (
     <Router>
-      <div className="App">
-        <div className="auth-wrapper">
-          <div className="auth-inner">
-            <Switch>
-              <Route path="/register" component={RegisterUser} />
-              <Route path="/resident/create" component={CreateResident} />
-              <Route path="/resident/:id" component={EditResident} />
-              <Route path="/resident" component={ListResidents} />
-              <Route path="/apartment/create" component={Apartment} />
-              <Route path="/apartment/:id/resident" component={ListResidents} />
-              <Route path="/apartment/:id" component={EditApartment} />
-              <Route path="/apartment" component={ListApartment} />
-              <Route path="/" component={LoginUser} />
-            </Switch>
-          </div>
-        </div>
-      </div>
+      <Switch>
+        <Route path="/register" component={RegisterUser} />
+        <Route path="/resident/create" component={CreateResident} />
+        <Route path="/resident/:id" component={EditResident} />
+        <Route path="/resident" component={ListResidents} />
+        <Route path="/apartment/create" component={Apartment} />
+        <Route path="/apartment/:id/resident" component={ListResidents} />
+        <Route path="/apartment/:id" component={EditApartment} />
+        <Route path="/apartment" component={ListApartment} />
+        <Route path="/" component={LoginUser} />
+      </Switch>
     </Router>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
-
+import './index.css';
 import SearchBar from '../../components/SearchBar';
 import ListResident from '../../components/Resident/ListResident';
 
@@ -51,8 +51,10 @@ export default function ApartmentResident() {
               <option value={false}>False</option>
             </Form.Control>
           </Col>
-          <Col sm={2}>
-            <Button onClick={() => history.push(`/resident/create`)}>Cadastrar</Button>
+          <Col sm={3}>
+            <Button className="buttonSize" onClick={() => history.push(`/resident/create`)}>
+              Cadastrar
+            </Button>
           </Col>
         </Row>
         <Row>

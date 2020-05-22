@@ -7,9 +7,11 @@ import Routes from './routes';
 function App() {
   return (
     <div className="App">
-      <ToastProvider autoDismiss autoDismissTimeout={3500}>
-        <Routes />
-      </ToastProvider>
+      <div className="card">
+        <ToastProvider autoDismiss autoDismissTimeout={3500}>
+          <Routes />
+        </ToastProvider>
+      </div>
     </div>
   );
 }

@@ -49,8 +49,10 @@ export default function Home() {
             <SearchBar searchValue={setSearchName} searchName={searchName} />
           </Col>
 
-          <Col sm={2}>
-            <Button onClick={() => history.push('/apartment/create')}>Cadastrar</Button>
+          <Col sm={3}>
+            <Button className="buttonSize" onClick={() => history.push('/apartment/create')}>
+              Cadastrar
+            </Button>
           </Col>
         </Row>
         <Row>
@@ -67,5 +69,5 @@ export default function Home() {
         </Row>
       </Container>
     </React.Fragment>
-  )
+  );
 }
