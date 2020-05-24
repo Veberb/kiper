@@ -1,12 +1,15 @@
 import gql from 'graphql-tag';
 
 const LIST_APARTMENTS = gql`
-  query ListApartments($name: String) {
-    listApartments(name: $name) {
-      _id
-      name
-      number
-      block
+  query ListApartments($name: String, $offset: Int, $limit: Int) {
+    listApartments(name: $name, offset: $offset, limit: $limit) {
+      apartments {
+        _id
+        name
+        number
+        block
+      }
+      totalApartment
     }
   }
 `;

@@ -3,11 +3,18 @@ const { authenticated } = require('../Auth');
 
 const resolvers = {
   Query: {
-    listApartments: authenticated((parent, { name }) => {
+    listApartments: authenticated(async (parent, { name, offset, limit }) => {
       const query = {};
       if (name) query.name = new RegExp(name);
 
-      return Apartment.find(query);
+      const [apartments, totalApartment] = await Promise.all([
+        Apartment.find(query)
+          .skip((offset - 1) * limit)
+          .limit(limit),
+        Apartment.countDocuments(query),
+      ]);
+
+      return { apartments, totalApartment };
     }),
     getApartment: authenticated((parent, { id }) => {
       return Apartment.findById(id);

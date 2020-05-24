@@ -6,6 +6,7 @@ import './index.css';
 import SearchBar from '../../components/SearchBar';
 import ListResident from '../../components/Resident/ListResident';
 import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
+import Pagination from '../../components/Pagination';
 import { ResidentQuery, ResidentMutation } from '../../services/apollo';
 
 export default function ApartmentResident() {
@@ -13,6 +14,8 @@ export default function ApartmentResident() {
   const [responsible, setResponsible] = useState('');
   const { id } = useParams();
   const history = useHistory();
+
+  const [pagination, setPagination] = useState({ offset: 1, limit: 2, totalCount: 0 });
 
   useBreadcrumb([
     {
@@ -23,13 +26,19 @@ export default function ApartmentResident() {
   ]);
 
   const { loading, data } = useQuery(ResidentQuery.LIST_RESIDENTS, {
-    variables: { name: searchName, apartmentId: id, responsible },
+    variables: { name: searchName, apartmentId: id, responsible, ...pagination },
     fetchPolicy: 'cache-and-network',
+    onCompleted: ({ listResidents }) => {
+      setPagination({ ...pagination, totalCount: listResidents.totalResident });
+    },
   });
 
   const [deleteResident] = useMutation(ResidentMutation.DELETE_RESIDENT, {
     refetchQueries: [
-      { query: ResidentQuery.LIST_RESIDENTS, variables: { name: searchName, apartmentId: id, responsible } },
+      {
+        query: ResidentQuery.LIST_RESIDENTS,
+        variables: { name: searchName, apartmentId: id, responsible, ...pagination },
+      },
     ],
   });
 
@@ -66,12 +75,17 @@ export default function ApartmentResident() {
           </Col>
         </Row>
         <Row>
-          <Col sm={12}>{!loading && !data.listResidents.length && <div> Nenhum morador encontrado </div>}</Col>
           <Col sm={12}>
-            {!loading && data.listResidents.length > 0 && (
-              <ListResident listResidents={data.listResidents} remove={removeResident} />
+            {!loading && !data.listResidents.residents.length && <div> Nenhum morador encontrado </div>}
+          </Col>
+          <Col sm={12}>
+            {!loading && data.listResidents.residents.length > 0 && (
+              <ListResident listResidents={data.listResidents.residents} remove={removeResident} />
             )}
           </Col>
+        </Row>
+        <Row className="centerPagination">
+          <Pagination setPagination={setPagination} pagination={pagination} />
         </Row>
       </Container>
     </React.Fragment>

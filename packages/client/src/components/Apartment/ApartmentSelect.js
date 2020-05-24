@@ -19,7 +19,7 @@ export default function ApartmentSelect({ formik }) {
           Selecionar Apartamento
         </option>
         {data &&
-          data.listApartments.map((apartment, index) => {
+          data.listApartments.apartments.map((apartment, index) => {
             return (
               <option value={apartment._id} key={index}>
                 {apartment.name}

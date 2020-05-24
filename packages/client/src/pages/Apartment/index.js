@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { Container, Table, Row, Col, Button } from 'react-bootstrap';
-import { PencilSquare, Trash, People } from 'react-bootstrap-icons';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 import SearchBar from '../../components/SearchBar';
 import Modal from '../../components/Modal';
 import DeleteApartmentModal from '../../components/Modal/Apartment/DeleteApartmentModal';
 import ApartmentList from '../../components/Apartment/ApartmentList';
+import Pagination from '../../components/Pagination';
 import { ApartmentQuery, ApartmentMutation } from '../../services/apollo';
 import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
 
@@ -18,6 +18,7 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [currentApartment, setCurrentApartment] = useState('');
   const history = useHistory();
+  const [pagination, setPagination] = useState({ offset: 1, limit: 2, totalCount: 0 });
 
   useBreadcrumb([
     {
@@ -26,11 +27,14 @@ export default function Home() {
   ]);
 
   const { loading, data } = useQuery(ApartmentQuery.LIST_APARTMENTS, {
-    variables: { name: searchName },
+    variables: { name: searchName, ...pagination },
     fetchPolicy: 'cache-and-network',
+    onCompleted: ({ listApartments }) => {
+      setPagination({ ...pagination, totalCount: listApartments.totalApartment });
+    },
   });
   const [deleteApartment] = useMutation(ApartmentMutation.DELETE_APARTMENT, {
-    refetchQueries: [{ query: ApartmentQuery.LIST_APARTMENTS, variables: { name: searchName } }],
+    refetchQueries: [{ query: ApartmentQuery.LIST_APARTMENTS, variables: { name: searchName, ...pagination } }],
   });
 
   const removeApartment = async () => {
@@ -64,16 +68,21 @@ export default function Home() {
           </Col>
         </Row>
         <Row>
-          <Col sm={12}>{!loading && !data.listApartments.length && <div> Nenhum apartamento encontrado</div>}</Col>
           <Col sm={12}>
-            {!loading && data.listApartments.length > 0 && (
+            {!loading && !data.listApartments.apartments.length && <div> Nenhum apartamento encontrado</div>}
+          </Col>
+          <Col sm={12}>
+            {!loading && data.listApartments.apartments.length > 0 && (
               <ApartmentList
-                listApartments={data.listApartments}
+                listApartments={data.listApartments.apartments}
                 setShowModal={setShowModal}
                 setCurrentApartment={setCurrentApartment}
               />
             )}
           </Col>
+        </Row>
+        <Row className="centerPagination">
+          <Pagination setPagination={setPagination} pagination={pagination} />
         </Row>
       </Container>
     </React.Fragment>

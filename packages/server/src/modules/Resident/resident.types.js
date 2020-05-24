@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   extend type Query {
-    listResidents(name: String, apartmentId: ID, responsible: String): [Resident]
+    listResidents(name: String, apartmentId: ID, responsible: String, offset: Int, limit: Int): ResidentPagination
     getResident(id: ID!): Resident
   }
 
@@ -20,6 +20,11 @@ const typeDefs = gql`
     email: String!
     apartment: String!
     responsible: String!
+  }
+
+  type ResidentPagination {
+    residents: [Resident]
+    totalResident: Int
   }
 
   type Resident {

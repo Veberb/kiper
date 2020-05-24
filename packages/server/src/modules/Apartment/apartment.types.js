@@ -8,7 +8,7 @@ const typeDefs = gql`
   }
 
   extend type Query {
-    listApartments(name: String): [Apartment]
+    listApartments(name: String, offset: Int, limit: Int): ApartmentPagination
     getApartment(id: ID!): Apartment
   }
 
@@ -16,6 +16,11 @@ const typeDefs = gql`
     name: String!
     number: Int!
     block: String!
+  }
+
+  type ApartmentPagination {
+    apartments: [Apartment]
+    totalApartment: Int
   }
 
   type Apartment {
