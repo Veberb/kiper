@@ -44,7 +44,7 @@ export default function Apartment() {
         <div>
           <h1>Cadastro Apartamento</h1>
         </div>
-        <ApartmentForm formik={formik} />
+        <ApartmentForm formik={formik} buttonName="Cadastrar" />
       </Container>
     </React.Fragment>
   );

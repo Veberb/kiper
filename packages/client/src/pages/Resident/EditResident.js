@@ -70,7 +70,7 @@ export default function EditResident() {
         <div>
           <h1>Editar Morador</h1>
         </div>
-        {!loading && <ResidentForm formik={formik} />}
+        {!loading && <ResidentForm formik={formik} buttonName="Editar" />}
       </Container>
     </React.Fragment>
   );

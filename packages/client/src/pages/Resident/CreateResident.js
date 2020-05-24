@@ -55,7 +55,7 @@ export default function CreateResident() {
         <div>
           <h1>Cadastrar Morador</h1>
         </div>
-        <ResidentForm formik={formik} />
+        <ResidentForm formik={formik} buttonName="Cadastrar" />
       </Container>
     </React.Fragment>
   );

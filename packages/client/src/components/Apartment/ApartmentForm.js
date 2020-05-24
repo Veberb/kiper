@@ -3,7 +3,7 @@ import React from 'react';
 import { Form, Row, Col } from 'react-bootstrap';
 import SpinnerButton from '../../components/Button';
 
-const ApartmentForm = ({ formik }) => {
+const ApartmentForm = ({ formik, buttonName }) => {
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
@@ -49,7 +49,7 @@ const ApartmentForm = ({ formik }) => {
             </Form.Group>
           </Col>
         </Row>
-        <SpinnerButton isSubmitting={formik.isSubmitting} />
+        <SpinnerButton isSubmitting={formik.isSubmitting} buttonName={buttonName} />
       </Form>
     </>
   );

@@ -55,7 +55,7 @@ export default function RegisterUser() {
         </div>
         <Form onSubmit={formik.handleSubmit}>
           <UserForm formik={formik} />
-          <SpinnerButton isSubmitting={formik.isSubmitting} />
+          <SpinnerButton isSubmitting={formik.isSubmitting} buttonName="Registrar" />
         </Form>
       </Container>
     </React.Fragment>

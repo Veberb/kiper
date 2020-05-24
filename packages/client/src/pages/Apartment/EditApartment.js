@@ -62,7 +62,7 @@ export default function Apartment() {
         <div>
           <h1>Editar Apartamento</h1>
         </div>
-        {!loading && <ApartmentForm formik={formik} />}
+        {!loading && <ApartmentForm formik={formik} buttonName="Editar" />}
       </Container>
     </React.Fragment>
   );
