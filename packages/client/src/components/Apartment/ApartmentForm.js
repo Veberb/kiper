@@ -15,7 +15,7 @@ const ApartmentForm = ({ formik }) => {
             onChange={formik.handleChange}
             value={formik.values.name}
             name="name"
-            isInvalid={!!formik.errors.name}
+            isInvalid={formik.touched.name && !!formik.errors.name}
           />
           <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>
         </Form.Group>
@@ -29,7 +29,7 @@ const ApartmentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.number}
                 name="number"
-                isInvalid={!!formik.errors.number}
+                isInvalid={formik.touched.number && !!formik.errors.number}
               />
               <Form.Control.Feedback type="invalid">{formik.errors.number}</Form.Control.Feedback>
             </Form.Group>
@@ -43,7 +43,7 @@ const ApartmentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.block}
                 name="block"
-                isInvalid={!!formik.errors.block}
+                isInvalid={formik.touched.block && !!formik.errors.block}
               />
               <Form.Control.Feedback type="invalid">{formik.errors.block}</Form.Control.Feedback>
             </Form.Group>

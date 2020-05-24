@@ -12,7 +12,7 @@ const UserForm = ({ formik }) => {
           onChange={formik.handleChange}
           value={formik.values.email}
           name="email"
-          isInvalid={!!formik.errors.email}
+          isInvalid={formik.touched.email && !!formik.errors.email}
         />
         <Form.Control.Feedback type="invalid">{formik.errors.email}</Form.Control.Feedback>
       </Form.Group>
@@ -24,7 +24,7 @@ const UserForm = ({ formik }) => {
           onChange={formik.handleChange}
           value={formik.values.password}
           name="password"
-          isInvalid={!!formik.errors.password}
+          isInvalid={formik.touched.password && !!formik.errors.password}
         />
         <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
       </Form.Group>

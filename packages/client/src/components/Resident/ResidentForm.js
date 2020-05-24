@@ -18,7 +18,7 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.name}
                 name="name"
-                isInvalid={!!formik.errors.name}
+                isInvalid={formik.touched.name && !!formik.errors.name}
               />
               <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>
             </Form.Group>
@@ -32,7 +32,7 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.cpf}
                 name="cpf"
-                isInvalid={!!formik.errors.cpf}
+                isInvalid={formik.touched.cpf && !!formik.errors.cpf}
               />
               <Form.Control.Feedback type="invalid">{formik.errors.cpf}</Form.Control.Feedback>
             </Form.Group>
@@ -48,7 +48,7 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 name="email"
-                isInvalid={!!formik.errors.email}
+                isInvalid={formik.touched.email && !!formik.errors.email}
               />
               <Form.Control.Feedback type="invalid">{formik.errors.email}</Form.Control.Feedback>
             </Form.Group>
@@ -62,7 +62,7 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.birth}
                 name="birth"
-                isInvalid={!!formik.errors.birth}
+                isInvalid={formik.touched.birth && !!formik.errors.birth}
               />
               <Form.Control.Feedback type="invalid">{formik.errors.birth}</Form.Control.Feedback>
             </Form.Group>
@@ -78,7 +78,7 @@ const ResidentForm = ({ formik }) => {
                 onChange={formik.handleChange}
                 value={formik.values.phone}
                 name="phone"
-                isInvalid={!!formik.errors.phone}
+                isInvalid={formik.touched.phone && !!formik.errors.phone}
               />
               <Form.Control.Feedback type="invalid">{formik.errors.phone}</Form.Control.Feedback>
             </Form.Group>

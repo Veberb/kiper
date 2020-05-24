@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form } from 'react-bootstrap';
+import { Container, Form, Row, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useMutation } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
@@ -10,7 +10,7 @@ import UserForm from '../../components/User/UserForm';
 import SpinnerButton from '../../components/Button';
 import { UserSchema } from '../../validation/';
 import { setToken } from '../../services/auth';
-
+import './index.css';
 export default function LoginUser() {
   const history = useHistory();
   const { addToast } = useToasts();
@@ -46,7 +46,12 @@ export default function LoginUser() {
         </div>
         <Form onSubmit={formik.handleSubmit}>
           <UserForm formik={formik} />
-          <SpinnerButton isSubmitting={formik.isSubmitting} />
+          <Row className="buttonCenter">
+            <SpinnerButton isSubmitting={formik.isSubmitting} buttonName="Entrar" />
+          </Row>
+          <Row className="buttonCenter">
+            <Button onClick={() => history.push('/register')}>Registrar</Button>
+          </Row>
         </Form>
       </Container>
     </React.Fragment>
