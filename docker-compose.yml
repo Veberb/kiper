@@ -1,0 +1,24 @@
+version: '3'
+services:
+  server:
+    build:
+      dockerfile: 'packages/server/Dockerfile'
+      context: './'
+    image: 'server-kiper'
+    ports:
+      - '4000:4000'
+    environment:
+      MONGODB_URI: 'mongodb://mongo:27017/kiper'
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+  client:
+    build:
+      dockerfile: 'packages/client/Dockerfile'
+      context: './'
+    image: 'client-kiper'
+    ports:
+      - '3000:3000'
