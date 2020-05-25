@@ -19,7 +19,7 @@
 
 - ## Projeto
 
-  - Após rodar o comando, ficará disponível o [Client](localhost:3000) e o [Server](localhost:4000/graphql)
+  - Após rodar o comando, ficará disponível o [Client](http://localhost:3000) e o [Server](http://localhost:4000/graphql)
 
 * ## Melhorias futuras:
 
