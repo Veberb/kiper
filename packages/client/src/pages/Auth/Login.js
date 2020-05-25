@@ -10,10 +10,18 @@ import UserForm from '../../components/User/UserForm';
 import SpinnerButton from '../../components/Button';
 import { UserSchema } from '../../validation/';
 import { setToken } from '../../services/auth';
+import useBreadcrumb from '../../utils/hooks/useBreadcrumb';
+
 import './index.css';
 export default function LoginUser() {
   const history = useHistory();
   const { addToast } = useToasts();
+
+  useBreadcrumb([
+    {
+      title: 'Login',
+    },
+  ]);
 
   const [signIn] = useMutation(UserMutation.SIGNIN, {
     onError: (err) => {
