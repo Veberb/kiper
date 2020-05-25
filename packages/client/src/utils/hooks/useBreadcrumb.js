@@ -8,7 +8,7 @@ const breadcrumbGql = gql`
   }
 `;
 
-export default function useBreadcrumb(qqCoisa) {
+export default function useBreadcrumb(breadcrumb) {
   const { data, client } = useQuery(breadcrumbGql);
 
   const current = useMemo(() => (data && data.breadcrumb) || [], [data]);
@@ -16,7 +16,7 @@ export default function useBreadcrumb(qqCoisa) {
     client,
   ]);
 
-  useEffect(() => set(qqCoisa), [qqCoisa, set]);
+  useEffect(() => set(breadcrumb), [breadcrumb, set]);
 
   return { current, set };
 }
