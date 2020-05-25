@@ -1,6 +1,5 @@
 import ApolloClient from 'apollo-boost';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { getToken } from '../auth';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -17,7 +16,7 @@ const client = new ApolloClient({
     }
   },
   request: (operation) => {
-    const token = getToken();
+    const token = localStorage.getItem('token');
     operation.setContext({ headers: { 'kiper-token': token } });
   },
 });

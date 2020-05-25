@@ -1,12 +1,9 @@
-let token;
-
 const setToken = (newToken) => {
-  token = newToken;
-  return token;
+  localStorage.setItem('token', newToken);
 };
 
 const getToken = () => {
-  return token;
+  return localStorage.getItem('token');
 };
 
 export { setToken, getToken };
