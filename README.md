@@ -13,12 +13,15 @@
   - MongoDB v4.0.10
   - Docker
 
-* ## Rodando o projeto
+- ## Rodando o projeto
 
   - Na raiz do projeto, executar o comando: `docker-compose up --build`
 
-- ## Melhorias futuras:
+- ## Projeto
+
+  - Após rodar o comando, ficará disponível o [Client](localhost:3000) e o [Server](localhost:4000/graphql)
+
+* ## Melhorias futuras:
 
   - Alterar a forma de autenticação, trocar pelo firebase.
-  - Remover o header da página de login (não consegui tirar :(
   - Migrar para Styled-components
